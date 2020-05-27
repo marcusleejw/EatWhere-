@@ -6,7 +6,7 @@ import Header from '../shared/header';
 import Login from "../sharedScreens/logIn";
 import Register from "../sharedScreens/register";
 import UserStack from "./userStack";
-import MerchantStack from "./merchantStack";
+import MerchantDrawer from "./merchantStack";
 
 const Stack = createStackNavigator();
 
@@ -24,7 +24,6 @@ export default function HomeStack() {
           headerTitleStyle: {
             fontWeight: "bold",
           },
-          headerShown: false
         }}
       >
         <Stack.Screen
@@ -40,14 +39,14 @@ export default function HomeStack() {
         />
 
         <Stack.Screen
-          name="UserStack"
-          component={UserStack}
+          name="UserDrawer"
+          component={UserDrawer}
           options={{ headerTitle: () => <Header title="Eating Places" /> }}
         />
 
         <Stack.Screen
-          name="MerchantStack"
-          component={MerchantStack}
+          name="MerchantDrawer"
+          component={MerchantDrawer}
           options={{
             headerTitle: () => <Header title="Welcome to EatWhere!" />,
           }}

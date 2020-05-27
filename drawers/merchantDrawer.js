@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 
 export default function MerchantDrawer() {
     return (
-            <Drawer.Navigator initialRouteName="Login"> 
-            </Drawer.Navigator>
+        <Drawer.Navigator initialRouteName="Login"> 
+        </Drawer.Navigator>
     )
 }

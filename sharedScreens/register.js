@@ -73,13 +73,13 @@ export default function Register({ navigation }) {
           title="Register!"
           onPress={() => registerUser()}
         />
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
         <Text
           style={styles.loginText}
           onPress={() => navigation.navigate("Login")}
         >
           Already registered? Click here to login!
         </Text>
-        <Text style={styles.errorMessage}>{errorMessage}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: "#3740FE",
-    marginTop: 25,
+    marginTop: 10,
     textAlign: "center",
     borderColor: "#f01d71",
   },
@@ -127,6 +127,9 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     color: "red",
-    alignSelf: "center",
+    alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 0,
+    fontSize: 15,
   },
 });

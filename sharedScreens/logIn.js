@@ -30,7 +30,7 @@ export default function LogIn({ navigation }) {
         .then((res) => {
           console.log(res);
           console.log("Merchant logged-in successfully!");
-          navigation.navigate("MerchantDrawer");
+          navigation.navigate("MerchantStack");
         })
         .catch((error) => {
           setErrorMessage("Wrong log in details. Please try again.");
@@ -50,7 +50,7 @@ export default function LogIn({ navigation }) {
         .then((res) => {
           console.log(res);
           console.log("User logged-in successfully!");
-          navigation.navigate("UserDrawer");
+          navigation.navigate("UserStack");
         })
         .catch((error) => {
           setErrorMessage(error.code);
@@ -58,6 +58,10 @@ export default function LogIn({ navigation }) {
           setPassword("");
         });
     }
+  };
+
+  const devLogin = () => {
+     navigation.navigate("UserStack");
   };
 
   return (
@@ -83,16 +87,19 @@ export default function LogIn({ navigation }) {
           secureTextEntry={true}
           value={password}
         />
-        <Button
-          color="#f01d71"
-          title="Log in as Merchant"
-          onPress={() => merchantLogin()}
-        />
-        <Button
-          color="#f01d71"
-          title="Log in as Consumer"
-          onPress={() => userLogin()}
-        />
+        <Text style={styles.logInText}>Log in as:</Text>
+        <View style={styles.buttonStyle}>
+          <Button
+            color="#f01d71"
+            title="     Merchant     "
+            onPress={() => merchantLogin()}
+          />
+          <Button
+            color="#f01d71"
+            title="     Consumer     "
+            onPress={() => userLogin()}
+          />
+        </View>
         <Text style={styles.errorMessage}>{errorMessage}</Text>
         <Text
           style={styles.registerText}
@@ -100,6 +107,11 @@ export default function LogIn({ navigation }) {
         >
           Don't have account? Click here to Register
         </Text>
+        <Button
+            color="#f01d71"
+            title="     Developer Testing     "
+            onPress={() => devLogin()}
+          />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -110,22 +122,29 @@ const styles = StyleSheet.create({
     flex: 1,
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
     padding: 35,
     backgroundColor: "#fff",
   },
   inputStyle: {
     width: "100%",
     marginBottom: 15,
-    paddingBottom: 15,
+    paddingBottom: 10,
     alignSelf: "center",
     borderColor: "#ccc",
     borderBottomWidth: 1,
   },
   registerText: {
     color: "#f01d71",
-    marginTop: 25,
+    marginTop: 10,
     textAlign: "center",
+  },
+  logInText: {
+    color: "#f01d71",
+    marginBottom: 10,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 15,
   },
   preloader: {
     left: 0,
@@ -152,6 +171,13 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     color: "red",
-    alignSelf: 'center',
+    alignSelf: "center",
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 15,
+  },
+  buttonStyle: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
